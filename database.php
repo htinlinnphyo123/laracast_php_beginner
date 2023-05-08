@@ -42,4 +42,3 @@
     $filterByAge = array_filter($players,function($p){
         return $p['dob'] < 2000;
     });
-
