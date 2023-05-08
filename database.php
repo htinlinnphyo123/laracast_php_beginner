@@ -1,44 +1,22 @@
 <?php
 
-    $players = [
-        [
-            'name' => 'bruno',
-            'team' => 'manchester united',
-            'dob' => 2002
-        ],
-        [
-            'name' => 'rashford',
-            'team' => 'manchester united',
-            'dob' => 2001
-        ],
-        [
-            'name' => 'messi',
-            'team' => 'psg',
-            'dob' => 1999
-        ],
-        [
-            'name' => 'neymar',
-            'team' => 'psg',
-            'dob' => 2021
-        ],
-        [
-            'name' => 'silva',
-            'team' => 'manchester city',
-            'dob' => 1950,
-        ]
-    ];
-    $filter = function($array,$fun){
-        $filterArray = [];
-        foreach($array as $a){
-            if($fun($a)){
-                $filterArray[] = $a;
-            }
+    class DB
+    {   
+        public $connection;
+
+        public function __construct($config,$username='root',$password='')
+        {
+            $dsn = 'mysql:' . http_build_query($config,'',';');
+            $this->connection = new PDO($dsn,$username,$password,[
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
         }
-        return $filterArray;
-    };
-    $filterByTeam = $filter($players,function($p){
-        return $p['dob'] >= 2000;
-    });
-    $filterByAge = array_filter($players,function($p){
-        return $p['dob'] < 2000;
-    });
+        public function query($query,$params=[])
+        {
+            $statement = $this->connection->prepare($query);
+            $statement->execute($params);
+            return $statement;
+        }
+    }
+
+?>

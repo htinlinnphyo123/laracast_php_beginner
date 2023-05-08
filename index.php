@@ -1,31 +1,18 @@
 <?php 
 
-    // require('function.php');
-
+    require('function.php');
     // require "route.php";
 
-    class DB
-    {   
-        public $connection;
-        public function __construct()
-        {
-            $dsn = "mysql:host=localhost;port=3306;dbname=school";
-            $this->connection = new PDO($dsn,'root','12345');
-        }
-        public function query($query)
-        {
-            $statement = $this->connection->prepare($query);
-            $statement->execute();
-            return $statement;
-        }
-    }
-
-    $database = new DB();
-    $students = $database->query("select * from students")->fetchAll(PDO::FETCH_ASSOC);
+    require "database.php";
+    
+    $config = require('config.php');
+    
+    $id = $_GET['id'];
+    $database = new DB($config['database'],'root','12345');
+    $query = "select * from students where id=:id";
+    // dd($query);
+    $students = $database->query($query,[':id'=>$id])->fetch();
     var_dump($students);
-
-    $eachStudent = $database->query("select * from students where id=3")->fetch(PDO::FETCH_ASSOC);
-    var_dump($eachStudent);
-
-
 ?>
+
+<!-- http://localhost:8000/?id=5;update students set name='susu update' where id=5-->
