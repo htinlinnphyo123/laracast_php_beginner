@@ -8,9 +8,10 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class="<?php echo $activeClass('/') ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-              <a href="/about" class="<?php echo $activeClass('/about') ?> rounded-md px-3 py-2 text-sm font-medium">About</a>
-              <a href="/contact" class="<?php echo $activeClass('/contact') ?> rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+              <a href="/" class="<?php echo activeClass('/') ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+              <a href="/about" class="<?php echo activeClass('/about') ?> rounded-md px-3 py-2 text-sm font-medium">About</a>
+              <a href="/notes" class="<?php echo activeClass('/notes') ?> rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+              <a href="/contact" class="<?php echo activeClass('/contact') ?> rounded-md px-3 py-2 text-sm font-medium">Contact</a>
             </div>
           </div>
         </div>
@@ -61,9 +62,9 @@
     <div class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="<?php echo $activeClass('/') ?> block rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-        <a href="/about" class="<?php echo $activeClass('/about') ?> block rounded-md px-3 py-2 text-sm font-medium">About</a>
-        <a href="/contact" class="<?php echo $activeClass('/contact') ?> block rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+        <a href="/" class="<?php echo activeClass('/') ?> block rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+        <a href="/about" class="<?php echo activeClass('/about') ?> block rounded-md px-3 py-2 text-sm font-medium">About</a>
+        <a href="/contact" class="<?php echo activeClass('/contact') ?> block rounded-md px-3 py-2 text-sm font-medium">Contact</a>
       </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">

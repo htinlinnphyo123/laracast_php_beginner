@@ -3,6 +3,9 @@
   $title = 'Contact Page';
   $banner_heading = 'Contact';
 
-  require('views/contact.view.php');
+  view('contact.view.php',[
+    'title' => 'Contact Page',
+    'banner_heading' => 'Contact'
+  ]);
 
 ?>
