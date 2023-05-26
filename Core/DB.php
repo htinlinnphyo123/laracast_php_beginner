@@ -4,7 +4,7 @@
     use PDO;
     class DB
     {   
-        public $connection;
+        protected $connection;
         public $statement;
 
         public function __construct($config,$username='root',$password='')
@@ -14,16 +14,26 @@
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);
         }
+        public function getConnection()
+        {
+            return $this->connection;
+        }
         public function query($query,$params=[])
         {
             $this->statement = $this->connection->prepare($query);
             $this->statement->execute($params);
             return $this;
         }
-        public function get(){
+        public function get()
+        {
             return $this->statement->fetchAll();
         }
-        public function findOrFail(){
+        public function find()
+        {
+            return $this->statement->fetch();
+        }
+        public function findOrFail()
+        {
             $result = $this->statement->fetch();
             if(!$result){
                 abort();

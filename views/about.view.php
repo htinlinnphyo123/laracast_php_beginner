@@ -4,6 +4,9 @@
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             Welcome to About page.
+            <?php   
+                echo $_SESSION['user']['id'] ?? 'no id detected';
+            ?>
         </div>
     </main>
 <?php require('partials/footer.php') ?>

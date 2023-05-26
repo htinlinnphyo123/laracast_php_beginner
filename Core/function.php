@@ -1,6 +1,7 @@
 <?php
 
     use Core\Response;
+    use Core\Session;
 
     function dd($var){
         var_dump($var);
@@ -22,11 +23,24 @@
     function base_path($path) {
         return BASE_PATH . $path;
     }
+    function redirect($path){
+        header("location: {$path}");
+        exit();
+    }
     function view($path,$attributes=[]) {
         extract($attributes);
         require BASE_PATH . "/views/$path";
     }
-
+    function login($attribute){
+        $_SESSION['user'] = $attribute;
+        session_regenerate_id(true);
+    }
+    function old($key,$default=''){
+        return $_SESSION['_flash']['old'][$key] ?? $default;
+    }
+    function logout(){
+        Session::flush();
+    }
 
 
 
